@@ -1,0 +1,18 @@
+
+Word to be found: attend
+	Filename: The_Souls_Of Black_Folk.txt
+		[51556, 51635]
+	Filename: Pride_and_Prejudice.txt
+		[21744, 41992, 59157, 74781, 106052]
+	Filename: Frankenstein.txt
+		[9278, 22752, 23967, 43605, 52971]
+
+Word to be found: scarlet
+	Filename: Pride_and_Prejudice.txt
+		[19578]
+	Filename: Frankenstein.txt
+		[10014]
+
+Word to be found: Geneva
+	Filename: Frankenstein.txt
+		[6479, 18165, 19790, 24678, 27551, 45040, 66392, 67930, 68054]
