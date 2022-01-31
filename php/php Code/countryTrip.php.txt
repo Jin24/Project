@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>All Bus Trips For Corresponding Country</title>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?>
+<h1>Here are all the bus trips:</h1>
+<ol>
+<?php
+ $countryChosen = $_POST['countrySel'];
+ //echo $countryChosen;
+ $query = "SELECT * from bustrip where country = '" . $countryChosen;
+ $query .= "'";
+//echo $query;
+$result = mysqli_query($connection,$query);
+ while($row = mysqli_fetch_assoc($result)){
+        echo '<li>';
+        echo 'Trip Name: ';
+        echo $row["tripName"];
+        echo '   |   ';
+        echo 'Trip ID: ';
+        echo $row["tripID"];
+        echo '   |   ';
+        echo 'Start Date: ';
+        echo $row["startDate"];
+        echo '   |   ';
+        echo 'End Date: ';
+        echo $row["endDate"];
+        echo '   |   ';
+        echo 'Country: ';
+        echo $row["country"];
+        echo '   |   ';
+        echo 'Assigned Plate: ';
+        echo $row["assignedPlate"];
+        echo '   |   ';
+        echo 'URL Link: ';
+        echo $row["urlimage"];
+ }
+ mysqli_free_result($result);
+ //mysqli_free($connection);
+?>
+</ol>
+<?php
+?>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Delete Booking</title>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?>
+<h1>Deleting A Booking</h1>
+<ol>
+<?php
+ $trip = $_POST["bookSel"];
+ $query1 = "DELETE FROM bookings where tripID =".$trip;
+ //echo $query1;
+$result = mysqli_query($connection,$query1);
+ echo 'Booking Deleted';
+?>
+</ol>
+</body>
+</html>

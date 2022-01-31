@@ -1,0 +1,15 @@
+<?php
+$queryPass = "SELECT * from passenger";
+$resultPass = mysqli_query($connection,$queryPass);
+if(!$resultPass){
+        die("Passenger data unable to retrieve");
+}
+while($rowPass=mysqli_fetch_assoc($resultPass)){
+        echo '<input type="radio" name="passSel" value = "';
+        echo $rowPass["passengerID"];
+        //echo 'check';
+        echo '">'.$rowPass["name"]."<br>";
+}
+mysqli_free_result($resultPass);
+?>
+

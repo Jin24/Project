@@ -1,0 +1,10 @@
+<?php
+echo '<input type="radio" name = "ascOrDes" value="ascT"';
+echo '">'."Ascending Trip Name Order\n";
+echo '<input type="radio" name = "ascOrDes" value="desT"';
+echo '">'."Descending Trip Name Order\n";
+echo '<input type="radio" name = "ascOrDes" value="acsC"';
+echo '">'."Ascending Country Order\n";
+echo '<input type="radio" name = "ascOrDes" value="desC"';
+echo '">'."Descending Country Order";
+?>

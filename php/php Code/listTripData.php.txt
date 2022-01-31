@@ -1,0 +1,40 @@
+<?php
+$query = 'SELECT * FROM bustrip';
+$result = mysqli_query($connection,$query);
+if(!$result){
+        die("databases bustrip failed.");
+}
+//echo "Here are all the bustrips:\n";
+//<p>
+while($row = mysqli_fetch_assoc($result)){
+        //echo $row;
+        echo '<input type="radio" name="chosenTrip" value="';
+        echo $row["tripID"];
+        echo '">'."Trip ID: ".$row["tripID"]."  |  Trip Name: ".$row["tripName"]."  |  Country: ".$row["country"]."<br>";
+        echo '<img scr="'.$row["urlimage"].'"height="60" width = "60"><br>';
+        //header('Content-type: image/png');
+        //echo file_get_contents('https://csd.uwo.ca/~lreid2/cs3319/assignments/assignment3/pics/beaches.png');
+        //echo 'test';
+        /*
+        echo 'Trip Name: ';
+        echo $row["tripName"];
+        echo '   |   ';
+        echo 'Trip ID: ';
+        echo $row["tripID"];
+        echo '   |   ';
+        echo 'Start Date: ';
+        echo $row["startDate"];
+        echo '   |   ';
+        echo 'End Date: ';
+        echo $row["endDate"];
+        echo '   |   ';
+        echo 'Country: ';
+        echo $row["country"];
+        echo 'nodata';
+        */
+}
+mysqli_free_result($result);
+?>
+
+
+

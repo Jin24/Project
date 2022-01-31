@@ -1,0 +1,27 @@
+<?php
+$queryP = "SELECT * FROM passenger INNER JOIN passport ON passenger.passengerPassport = passport.passportNum ORDER BY name DESC";
+//$queryP = "SELECT * from passenger";
+//echo $queryP;
+$resultP = mysqli_query($connection,$queryP);
+if(!$resultP){
+        die("Passenger data unable to retrieve");
+}
+while($row = mysqli_fetch_assoc($resultP)){
+        echo 'Passenger ID: ';
+        echo $row['passengerID'];
+        echo '  |  Name: ';
+        echo $row['name'];
+        echo '  |  Passport ID: ';
+        echo $row['passportNum'];
+        echo '  |  Citizenship: ';
+        echo $row['citizenship'];
+        echo '  |  Expiry Date: ';
+        echo $row['expiry'];
+        echo '  |  Birth Date: ';
+        echo $row['birthDate'];
+        echo '<br>';
+
+}
+mysqli_free_result($resultP);
+?>
+

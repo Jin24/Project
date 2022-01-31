@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bus Trip Scheduler</title>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?>
+<h1>Welcome to Bus Trip Scheduler</h1>
+<h2>Select Order to View All Bus Trip Data:</h2>
+<form action="getBusTrips.php" method="post">
+<?php
+include 'getAscOrDes.php';
+?>
+<p>
+<input type="submit"value="View All Bus Trip Data">
+</form>
+<p>
+<hr>
+<p>
+<h2>Select Trip to Change Data:</h2>
+<form action="changeTripData.php" method="post" enctype='multipart/form-data'>
+New Trip Name: <input type="text" name="newName"><br>
+New Start Date: <input type="date" name="newStartDate"><br>
+New End Date: <input type="date" name="newEndDate"><br>
+New Image URL: <input type="text" name="newImageURL"><br>
+For which Trip: <br>
+<?php
+include 'listTripData.php';
+?>
+<input type="submit"value="Change This Trip Data">
+</form>
+<p>
+<hr>
+<p>
+<h2>Select Trip to Delete:</h2>
+<form action="deleteTrip.php" method="post">
+<?php
+include 'listTripData.php';
+?>
+<input type ="submit"value="Delete This Trip">
+</form>
+<p>
+<hr>
+<p>
+<h2>Add New Trip: </h2>
+<form action="addNewTrip.php" method="post" enctype='multipart/form-data'>
+New Trip Name: <input type="text" name="newName"><br>
+New Trip ID: <input type="text" name="newTripID"><br>
+New Start Date: <input type="date" name="newStartDate"><br>
+New End Date: <input type="date" name="newEndDate"><br>
+New Country: <input type="text" name="newCountry"><br>
+New Image URL: <input type="text" name="newImageURL"><br>
+New Assigned Plate: <br>
+<?php
+include 'listBusAvail.php';
+?>
+<input type ="submit"value="Add New Trip">
+</form>
+<p>
+<hr>
+<p>
+<h2>Find All Bus Trips for a Country:</h2>
+<form action="countryTrip.php" method="post">
+<?php
+include 'listCountries.php';
+?>
+<input type="submit"value="Find Bus Trips for this Country">
+</form>
+<p>
+<hr>
+<p>
+<h2>Create Booking for Passenger:<br> </h2>
+<form action="createBooking.php" method="post" enctype = 'multipart/form-data'>
+Price of Trip: <input type="text" name="price"><br>
+<?php
+include 'listPassengers.php';
+include 'listTripData.php';
+?>
+<input type ="submit"value="Create Booking">
+</form>
+<p>
+<hr>
+<p>
+<h2>View all Passenger Information: </h2>
+<?php
+        include 'viewPassengerInfo.php';
+?>
+</form>
+<p>
+<hr>
+<p>
+<h2>View all Bookings for Passenger Chosen Below:<br></h2>
+<form action= "viewBookPass.php" method ="post">
+<?php
+        include 'listPassengers.php';
+?>
+<input type="submit"value="View Booking for Passenger">
+</form>
+<p>
+<hr>
+<p>
+<h2>Delete A Booking : <br></h2>
+<form action= "deleteBooking.php" method = "post">
+<?php
+        include 'listBookings.php';
+?>
+<input type="submit"value="Delete Booking">
+</form>
+<p>
+<hr>
+<p>
+<h2>Bus Trips that do not have bookings: <br></h2>
+<?php
+        include 'tripWithoutBook.php';
+?>
+</form>
+
+
+<?php
+mysqli_close($connection);
+?>
+</body>
+</html>

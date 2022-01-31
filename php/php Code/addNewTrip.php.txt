@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Add New Trip</title>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?>
+<h1>Adding New Trip With Given Info: </h1>
+<ol>
+<?php
+ //$busP = $_POST["busPlate"];
+ $newNameCheck = $_POST["newName"];
+ $dateStart = $_POST["newStartDate"];
+ $dateEnd = $_POST["newEndDate"];
+ $url = $_POST["newImageURL"];
+ $country = $_POST["newCountry"];
+ $tripIDNew = $_POST["newTripID"];
+ $busPlateN = $_POST["busPlate"];
+ echo 'bus'.$busPlateN;
+ $query1 = "SELECT * from bustrip where tripID = " .$tripIDNew;
+ //echo $query1;
+$result1 = mysqli_query($connection,$query1);
+ $row = mysqli_fetch_assoc($result1);
+ if(!empty($row["tripName"])){
+        echo 'Cannot Add Trip because that Trip ID already Exists, Try again<br>';
+ }else{
+        $query = "INSERT INTO bustrip VALUES ('" . $newNameCheck . "' , " .$tripIDNew . ",'" . $dateStart . "', '" . $dateEnd . "', '" . $country . "', '".$busPlateN."', '" . $url . "')";
+        //echo $query;
+        $result = mysqli_query($connection,$query);
+        echo 'Added New Trip<br>';
+}
+ mysqli_free_result($result);
+ mysqli_close($connection);
+?>
+</ol>
+<?php
+?>
+</body>
+</html>
+

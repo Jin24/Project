@@ -1,0 +1,19 @@
+<?php
+$query = "SELECT * from bookings";
+$result = mysqli_query($connection,$query);
+if(!$result){
+        die("Booking data unable to retrieve");
+}
+while($row=mysqli_fetch_assoc($result)){
+        echo '<input type="radio" name= "bookSel" value = "';
+        echo $row['tripID'];
+        echo '">'."Passenger ID: ".$row['passengerID']." Trip Cost: ". $row['tripCost']."<br>";
+
+}
+mysqli_free_result($result);
+?>
+
+
+
+
+

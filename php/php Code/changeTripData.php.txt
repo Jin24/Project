@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Change Trip Data</title>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?>
+<h1>Changed Trip Data:</h1>
+<ol>
+<?php
+ $newNameCheck = $_POST["newName"];
+ $dateStart = $_POST["newStartDate"];
+ $dateEnd = $_POST["newEndDate"];
+ $url = $_POST["newImageURL"];
+ $thisTrip = $_POST["chosenTrip"];
+ //$query = 'UPDATE bustrip set tripName = "" where tripID = 1';
+ if(!empty($newNameCheck)){
+ $query = "UPDATE bustrip SET tripName = '" . $newNameCheck . "' WHERE tripID = " . $thisTrip;
+ $result = mysqli_query($connection,$query);
+ //mysqli_close($connection);
+ echo 'Changed Trip Name<br>';
+ mysqli_free_result($result);
+ }
+ if(!empty($dateStart)){
+ $query1 = "UPDATE bustrip SET startDate = '" . $dateStart . "' WHERE tripID = " . $thisTrip;
+ $result1 = mysqli_query($connection,$query1);
+ //mysqli_close($connection);
+ echo 'Changed Start Date<br>';
+ mysqli_free_result($result1);
+ }
+ if(!empty($dateEnd)){
+ $query2 = "UPDATE bustrip SET endDate = '" . $dateEnd . "' WHERE tripID = " . $thisTrip;
+ $result2 = mysqli_query($connection,$query2);
+ //mysqli_close($connection);
+ echo 'Changed End Date<br>';
+ mysqli_free_result($result2);
+ }
+ if(!empty($url)){
+ $query3 = "UPDATE bustrip SET urlimage = '" . $url . "' WHERE tripID = " . $thisTrip;
+ $result3 = mysqli_query($connection,$query3);
+ //mysqli_close($connection);
+ echo 'Changed Image Url';
+ mysqli_free_result($result3);
+ }
+
+ mysqli_close($connection);
+
+/*
+ echo $thisTrip;
+ $query = 'SELECT * from bustrip where tripID = "".$thisTrip';
+ $result = mysqli_query($connection,$query);
+ $row = mysqli_fetch_assoc($result);
+ echo $row['tripName'];
+ $query1 = 'UPDATE bustrip set tripName = $newNameCheck where tripID = $thisTrip';
+ $result1 = mysqli_query($connection,$query);
+ $row1 = mysqli_fetch_assoc($result);
+ echo $row1['tripName'];
+ if(!empty($newNameCheck)){
+        //$query = 'update bustrip set tripName = '$newNameCheck.' where tripID = $thisTrip';
+        //$result = mysqli_query($connection,$query);
+        //$query= 'UPDATE bustrip SET tripName = $newNameCheck where tripID = $thisTrip';
+        echo 'Changed Trip Name';
+
+ }
+*/
+/*
+ if(!empty($dateStart)){
+        UPDATE bustrip SET startDate = $dateStart WHERE tripID =$whichTrip;
+        echo 'Changed Start Date';
+ }
+ if(!empty($dateEnd)){
+        UPDATE bustrip SET endDate = $dateEnd WHERE tripID =$whichTrip;
+        echo 'Changed End Date';
+ }
+ if(!empty($url)){
+        UPDATE bustrip SET urlimage = $url WHERE tripID =$whichTrip;
+        echo 'Changed Start Date';
+ }
+*/
+ //echo 'New Data for Trip: ';
+ //echo SELECT * from bustrip where tripID = '$whichTrip';
+ //mysqli_free_result($result);
+?>
+</ol>
+<?php
+        //mysqli_close($connection);
+?>
+</body>
+</html>
